@@ -22,6 +22,7 @@ const App = () => {
     return {
       id: nanoid(),
       value: die,
+      isHeld: false
     }
   }
 
@@ -30,12 +31,13 @@ const App = () => {
   }
 
   function holdDice(id){
-    console.log(id)
+    return setDice(prevDie => prevDie.map(die => die.id === id ? {...die, isHeld: !die.isHeld} : die))
   }
   
   const dieElements = dice.map(die => <Die 
     value={die.value}
     holdDice={() => holdDice(die.id)}
+    isHeld={die.isHeld}
      />)
 
 
