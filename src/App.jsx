@@ -7,11 +7,17 @@ const App = () => {
 
   const [dice, setDice] = useState(allNewDice())
 
+  function generateNewDie(){
+    const die = Math.ceil(Math.random() * 5)
+    return {
+      value: die,
+    }
+  }
+
   function allNewDice() {
     const newDice = [];
     for(let i = 0; i < 10; i++){
-      const die = Math.ceil(Math.random() * 5)
-      newDice.push(die)
+      newDice.push(generateNewDie())
     }
     return newDice
   }
@@ -21,7 +27,7 @@ const App = () => {
   }
   
   const dieElements = dice.map(die => <Die 
-    value={die}
+    value={die.value}
     
      />)
 
