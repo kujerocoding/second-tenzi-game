@@ -1,6 +1,7 @@
 import React from 'react'
 import Die from './Die'
 import {useState} from 'react'
+import './App.css'
 
 const App = () => {
 
@@ -18,9 +19,12 @@ const App = () => {
   const dieElements = dice.map(die => <Die value={die} />)
 
   return (
-    <div>
-      <p>{dieElements}</p>
-    </div>
+    <main>
+      <div className='dice-container'>
+        {dieElements}
+      </div>
+      <button>Roll</button>
+    </main>
   )
 }
 
