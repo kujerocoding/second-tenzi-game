@@ -27,7 +27,7 @@ const App = () => {
   }
 
   function rollDice(){
-    setDice(allNewDice())
+    setDice(prevDice => prevDice.map(die => die.isHeld ? die : generateNewDie()))
   }
 
   function holdDice(id){
