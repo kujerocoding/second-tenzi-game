@@ -8,13 +8,6 @@ const App = () => {
 
   const [dice, setDice] = useState(allNewDice())
 
-  function generateNewDie(){
-    const die = Math.ceil(Math.random() * 5)
-    return {
-      id: nanoid(),
-      value: die,
-    }
-  }
 
   function allNewDice() {
     const newDice = [];
@@ -24,15 +17,28 @@ const App = () => {
     return newDice
   }
 
+  function generateNewDie(){
+    const die = Math.ceil(Math.random() * 5)
+    return {
+      id: nanoid(),
+      value: die,
+    }
+  }
+
   function rollDice(){
     setDice(allNewDice())
+  }
+
+  function holdDice(id){
+    console.log(id)
   }
   
   const dieElements = dice.map(die => <Die 
     value={die.value}
-    
+    holdDice={() => holdDice(die.id)}
      />)
-console.log(dice)
+
+
   return (
     <main>
       <h1>Tenzi</h1>
