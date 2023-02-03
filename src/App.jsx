@@ -9,6 +9,7 @@ const App = () => {
 
   const [dice, setDice] = useState(allNewDice())
   const [tenzi, setTenzi] = useState(false)
+  const [count, setCount] = useState(0)
 
   useEffect( () => {
     const allHeld = dice.every(die => die.isHeld)
@@ -39,9 +40,11 @@ const App = () => {
   function rollDice(){
     if (!tenzi){
       setDice(prevDice => prevDice.map(die => die.isHeld ? die : generateNewDie()))
+      setCount(count => count + 1)
     }else{
       setTenzi(false)
       setDice(allNewDice())
+      setCount(0)
     }
     
   }
@@ -66,6 +69,7 @@ const App = () => {
         {dieElements}
       </div>
       <p>{tenzi ? "You Won!" : ""}</p>
+      <p>Dice count : {count}</p>
       <button onClick={rollDice}>{tenzi ? "New Game" : "Roll"}</button>
     </main>
   )
