@@ -2,6 +2,7 @@ import React from 'react'
 import Die from './Die'
 import {useState} from 'react'
 import './App.css'
+import { nanoid } from 'nanoid'
 
 const App = () => {
 
@@ -10,6 +11,7 @@ const App = () => {
   function generateNewDie(){
     const die = Math.ceil(Math.random() * 5)
     return {
+      id: nanoid(),
       value: die,
     }
   }
@@ -30,7 +32,7 @@ const App = () => {
     value={die.value}
     
      />)
-
+console.log(dice)
   return (
     <main>
       <h1>Tenzi</h1>
